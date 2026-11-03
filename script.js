@@ -20,14 +20,14 @@ function renderCards(list) {
   count.textContent = list.length + ' servicio' + (list.length !== 1 ? 's' : '') + ' disponible' + (list.length !== 1 ? 's' : '');
   if (!list.length) { grid.innerHTML = '<div class="empty-state"><p>No hay servicios en esta categoría.</p></div>'; return; }
   list.forEach((p, i) => {
-    const imgSrc = `imagenes/catalogo/${p.cat}/${p.id}.jpg`;
+    const imgSrc = `imagenes/catalogo/${p.cat}/portada.jpg`;
     const card = document.createElement('div');
     card.className = 'product-card';
     card.style.animationDelay = (i * 0.04) + 's';
     card.innerHTML = `
       <div class="card-img-wrap" style="background:${p.color}">
         <img class="card-bg-img" src="${imgSrc}" alt="${p.nombre}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="card-ph" style="display:none"><span class="card-ph-icon">${p.icon}</span><span class="card-ph-text">Imagen próximamente</span></div>
+        <div class="card-ph" style="display:none"><span class="card-ph-icon">${p.icon}</span></div>
         <div class="card-overlay"><button class="card-overlay-btn">Ver detalle →</button></div>
       </div>
       <div class="card-shadow-wrap" style="background:${p.color}">
@@ -73,19 +73,26 @@ document.head.appendChild(lbStyle);
 document.querySelectorAll('.gal-item').forEach(item => {
   item.addEventListener('click', () => {
     const img = item.querySelector('img');
+    const vid = item.querySelector('video');
+    const vidOk = vid && vid.readyState > 0;
+    const imgOk = img && img.complete && img.naturalWidth > 0;
+    if (!vidOk && !imgOk) return; // si no hay nada cargado, no abre el lightbox
+
     const overlay = document.createElement('div');
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:zoom-out;padding:40px;animation:lbIn .3s ease';
-    if (img && img.complete && img.naturalWidth > 0) {
-      const clone = document.createElement('img');
-      clone.src = img.src;
-      clone.style.cssText = 'max-width:90vw;max-height:86vh;object-fit:contain;border-radius:2px;animation:imgIn .3s ease';
-      overlay.appendChild(clone);
+    let media;
+    if (vidOk) {
+      media = document.createElement('video');
+      media.src = vid.currentSrc || vid.src;
+      media.controls = true; media.autoplay = true; media.loop = true; media.playsInline = true;
+      media.addEventListener('click', e => e.stopPropagation());
     } else {
-      const ph = document.createElement('div');
-      ph.style.cssText = 'color:rgba(255,255,255,.3);font-family:serif;font-size:1.2rem;font-style:italic';
-      ph.textContent = item.querySelector('.gal-overlay span')?.textContent || 'Imagen próximamente';
-      overlay.appendChild(ph);
+      media = document.createElement('img');
+      media.src = img.src;
     }
+    media.style.cssText = 'max-width:90vw;max-height:86vh;object-fit:contain;border-radius:2px;animation:imgIn .3s ease';
+    overlay.appendChild(media);
+
     const btn = document.createElement('button');
     btn.innerHTML = '×';
     btn.style.cssText = 'position:absolute;top:20px;right:28px;background:none;border:none;color:rgba(255,255,255,.6);font-size:2.5rem;cursor:pointer;line-height:1;transition:color .2s';
@@ -94,9 +101,15 @@ document.querySelectorAll('.gal-item').forEach(item => {
     overlay.appendChild(btn);
     document.body.appendChild(overlay);
     document.body.style.overflow = 'hidden';
-    const close = () => { document.body.removeChild(overlay); document.body.style.overflow = ''; };
+
+    const esc = e => { if (e.key === 'Escape') close(); };
+    function close() {
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', esc);
+    }
     overlay.addEventListener('click', close);
     btn.addEventListener('click', e => { e.stopPropagation(); close(); });
-    document.addEventListener('keydown', function esc(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc); } });
+    document.addEventListener('keydown', esc);
   });
 });

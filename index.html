@@ -32,14 +32,14 @@
   </div>
 </nav>
 
-<div id="heroCarousel" class="carousel slide adl-hero" data-bs-ride="carousel">
+<div id="heroCarousel" class="carousel slide adl-hero" data-bs-ride="carousel" data-bs-interval="5000">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active slide-1" style="background-image: url('imagenes/slide1.jpg')">
+    <div class="carousel-item active slide-1" style="background-image: url('imagenes/slide1.png')">
       <div class="carousel-caption adl-caption">
         <div class="slide-eyebrow"><span class="slide-dot"></span>Artec Dental Lab · Montemorelos, N.L.</div>
         <h2>Cada pieza,<br/><em>una obra de precisión.</em></h2>
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="carousel-item slide-2" style="background-image: url('imagenes/slide2.jpg')">
+    <div class="carousel-item slide-2" style="background-image: url('imagenes/slide2.png')">
       <div class="carousel-caption adl-caption">
         <div class="slide-eyebrow"><span class="slide-dot"></span>Artec Dental Lab · Nuestros servicios</div>
         <h2>Coronas, puentes y<br/><em>restauraciones fijas</em></h2>
@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-    <div class="carousel-item slide-3" style="background-image: url('imagenes/slide3.jpg')">
+    <div class="carousel-item slide-3" style="background-image: url('imagenes/slide3.png')">
       <div class="carousel-caption adl-caption">
         <div class="slide-eyebrow"><span class="slide-dot"></span>Artec Dental Lab · Atención directa</div>
         <h2>Cotiza tu caso<br/><em>hoy mismo.</em></h2>
@@ -137,8 +137,8 @@
     <div class="servicios-grid">
       <div class="servicio-card reveal d1">
         <div class="servicio-img">
-          <img src="imagenes/corona-disilicato.jpg" alt="Corona Disilicato" onerror="this.style.display='none'"/>
-          <div class="img-placeholder"><span class="img-ph-icon">◈</span><span class="img-ph-text">Imagen próximamente</span></div>
+          <img src="imagenes/corona-disilicato.png" alt="Corona Disilicato" onerror="this.style.display='none'"/>
+          <div class="img-placeholder"><span class="img-ph-icon">◈</span></div>
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Restauración fija</span>
@@ -149,8 +149,8 @@
       </div>
       <div class="servicio-card reveal d2">
         <div class="servicio-img">
-          <img src="imagenes/puente-pmma.jpg" alt="Puente PMMA" onerror="this.style.display='none'"/>
-          <div class="img-placeholder"><span class="img-ph-icon">◇</span><span class="img-ph-text">Imagen próximamente</span></div>
+          <img src="imagenes/puente-pmma.png" alt="Puente PMMA" onerror="this.style.display='none'"/>
+          <div class="img-placeholder"><span class="img-ph-icon">◇</span></div>
         </div>
         <div class="servicio-body">
           <span class="servicio-tag">Provisional de larga duración</span>
@@ -168,12 +168,18 @@
     <div class="eyebrow reveal">Nuestro trabajo</div>
     <h2 class="section-h reveal">Galería<br/><em>de trabajos</em></h2>
     <div class="galeria-masonry">
-      <div class="gal-item reveal d1"><div class="gal-inner"><div class="gal-ph" style="height:220px"><span class="gal-ph-icon">◈</span><span class="gal-ph-text">Imagen próximamente</span></div><div class="gal-overlay"><span>Corona Disilicato</span></div></div></div>
-      <div class="gal-item reveal d2"><div class="gal-inner"><div class="gal-ph" style="height:300px"><span class="gal-ph-icon">◇</span><span class="gal-ph-text">Imagen próximamente</span></div><div class="gal-overlay"><span>Puente PMMA</span></div></div></div>
-      <div class="gal-item reveal d3"><div class="gal-inner"><div class="gal-ph" style="height:260px"><span class="gal-ph-icon">○</span><span class="gal-ph-text">Imagen próximamente</span></div><div class="gal-overlay"><span>Detalle de precisión</span></div></div></div>
-      <div class="gal-item reveal d1"><div class="gal-inner"><div class="gal-ph" style="height:280px"><span class="gal-ph-icon">◈</span><span class="gal-ph-text">Imagen próximamente</span></div><div class="gal-overlay"><span>Restauración completa</span></div></div></div>
-      <div class="gal-item reveal d2"><div class="gal-inner"><div class="gal-ph" style="height:200px"><span class="gal-ph-icon">◇</span><span class="gal-ph-text">Imagen próximamente</span></div><div class="gal-overlay"><span>Sector anterior</span></div></div></div>
-      <div class="gal-item reveal d3"><div class="gal-inner"><div class="gal-ph" style="height:320px"><span class="gal-ph-icon">○</span><span class="gal-ph-text">Imagen próximamente</span></div><div class="gal-overlay"><span>Trabajo finalizado</span></div></div></div>
+      <!-- Columna 1 -->
+      <div class="gal-item gal-video gal-v45 reveal d1"><div class="gal-inner"><span class="gal-vid-ph">▶</span><video src="imagenes/galeria/video-01.mp4" muted loop autoplay playsinline preload="metadata"></video><div class="gal-overlay"><span>En el laboratorio</span></div></div></div>
+      <div class="gal-item reveal d1"><div class="gal-inner"><img src="imagenes/galeria/foto-01.jpg" alt="Enfilado de dientes" loading="lazy"/><div class="gal-overlay"><span>Enfilado de dientes</span></div></div></div>
+      <div class="gal-item reveal d1"><div class="gal-inner"><img src="imagenes/galeria/foto-02.jpg" alt="Equipo CAD/CAM" loading="lazy"/><div class="gal-overlay"><span>Equipo CAD/CAM</span></div></div></div>
+      <!-- Columna 2 -->
+      <div class="gal-item reveal d2"><div class="gal-inner"><img src="imagenes/galeria/foto-03.jpg" alt="Diseño digital" loading="lazy"/><div class="gal-overlay"><span>Diseño digital</span></div></div></div>
+      <div class="gal-item gal-video gal-v45 reveal d2"><div class="gal-inner"><span class="gal-vid-ph">▶</span><video src="imagenes/galeria/video-02.mp4" muted loop autoplay playsinline preload="metadata"></video><div class="gal-overlay"><span>En el laboratorio</span></div></div></div>
+      <div class="gal-item reveal d2"><div class="gal-inner"><img src="imagenes/galeria/foto-04.jpg" alt="Guarda oclusal" loading="lazy"/><div class="gal-overlay"><span>Guarda oclusal</span></div></div></div>
+      <!-- Columna 3 -->
+      <div class="gal-item reveal d3"><div class="gal-inner"><img src="imagenes/galeria/foto-05.jpg" alt="Fresado CAD/CAM" loading="lazy"/><div class="gal-overlay"><span>Fresado CAD/CAM</span></div></div></div>
+      <div class="gal-item reveal d3"><div class="gal-inner"><img src="imagenes/galeria/foto-06.jpg" alt="Zirconia multicapa" loading="lazy"/><div class="gal-overlay"><span>Zirconia multicapa</span></div></div></div>
+      <div class="gal-item gal-video gal-v45 reveal d3"><div class="gal-inner"><span class="gal-vid-ph">▶</span><video src="imagenes/galeria/video-03.mp4" muted loop autoplay playsinline preload="metadata"></video><div class="gal-overlay"><span>En el laboratorio</span></div></div></div>
     </div>
   </div>
 </section>
@@ -253,17 +259,17 @@
       <div class="resena-card reveal d1">
         <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
         <p class="resena-q">"La calidad del disilicato es excepcional. Mis pacientes no pueden distinguirlo del diente natural — y llega siempre en tiempo."</p>
-        <div class="resena-author"><div class="resena-name">Dr. Ejemplo Dentista</div><div class="resena-clinic">Clínica Dental · Monterrey, N.L.</div></div>
+        <div class="resena-author"><div class="resena-name">Dr. Felipe Bazaldua</div><div class="resena-clinic">Clínica Dental · Monterrey, N.L.</div></div>
       </div>
       <div class="resena-card reveal d2">
         <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
         <p class="resena-q">"Lo que más valoro es hablar directamente con Alfredo. Sabe exactamente lo que necesitas antes de que termines de explicarlo."</p>
-        <div class="resena-author"><div class="resena-name">Dra. Ejemplo Dentista</div><div class="resena-clinic">Consultorio Dental · Linares, N.L.</div></div>
+        <div class="resena-author"><div class="resena-name">Dra. Eli Juliana</div><div class="resena-clinic">Consultorio Dental · Linares, N.L.</div></div>
       </div>
       <div class="resena-card reveal d3">
         <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
         <p class="resena-q">"Trabajo con varios laboratorios. Artec es el único donde nunca he pedido retrabajos. El ajuste es correcto desde la primera vez."</p>
-        <div class="resena-author"><div class="resena-name">Dr. Ejemplo Dentista</div><div class="resena-clinic">Centro Dental · Montemorelos, N.L.</div></div>
+        <div class="resena-author"><div class="resena-name">Dr. Héctor Carrizoza</div><div class="resena-clinic">Centro Dental · Montemorelos, N.L.</div></div>
       </div>
     </div>
   </div>

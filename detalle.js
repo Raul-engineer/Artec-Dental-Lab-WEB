@@ -11,7 +11,7 @@ if (!p) {
   document.getElementById('bc-cat').href = `index.html?cat=${p.cat}#catalogo`;
   document.getElementById('bc-nombre').textContent = p.nombre;
 
-  const imgSrc = `imagenes/catalogo/${p.cat}/${p.id}.jpg`;
+  const imgSrc = `imagenes/catalogo/${p.cat}/portada.jpg`;
   const imgEl = document.getElementById('det-img-main');
   const phEl = document.getElementById('det-ph');
   const swEl = document.getElementById('det-shadow-img');
@@ -42,14 +42,14 @@ if (!p) {
   const rel = productos.filter(x => x.cat === p.cat && x.id !== p.id).slice(0, 4);
   const grid = document.getElementById('relacionados-grid');
   rel.forEach((r, i) => {
-    const imgR = `imagenes/catalogo/${r.cat}/${r.id}.jpg`;
+    const imgR = `imagenes/catalogo/${r.cat}/portada.jpg`;
     const card = document.createElement('div');
     card.className = 'product-card';
     card.style.animationDelay = (i * 0.06) + 's';
     card.innerHTML = `
       <div class="card-img-wrap" style="background:${r.color}">
         <img class="card-bg-img" src="${imgR}" alt="${r.nombre}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="card-ph" style="display:none"><span class="card-ph-icon">${r.icon}</span><span class="card-ph-text">Imagen próximamente</span></div>
+        <div class="card-ph" style="display:none"><span class="card-ph-icon">${r.icon}</span></div>
         <div class="card-overlay"><button class="card-overlay-btn">Ver detalle →</button></div>
       </div>
       <div class="card-shadow-wrap" style="background:${r.color}">
