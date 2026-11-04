@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="styles.css?v=3"/>
 </head>
 <body>
 
@@ -104,25 +104,25 @@
     <div class="proceso-grid">
       <div class="proceso-item reveal d1">
         <span class="proceso-n">01</span>
-        <div class="proceso-icon-wrap"><span class="proceso-icon">📋</span></div>
+        <div class="proceso-anim" data-anim="animaciones/paso-01.json"></div>
         <div class="proceso-h">Recepción del caso</div>
         <p class="proceso-p">Recibimos tu indicación con todos los detalles clínicos: shade, materiales, dimensiones y referencias específicas del paciente.</p>
       </div>
       <div class="proceso-item reveal d2">
         <span class="proceso-n">02</span>
-        <div class="proceso-icon-wrap"><span class="proceso-icon">⚙️</span></div>
+        <div class="proceso-anim" data-anim="animaciones/paso-02.json"></div>
         <div class="proceso-h">Fabricación</div>
         <p class="proceso-p">Procesamos cada pieza con precisión artesanal y tecnología de fresado de alta exactitud. Cada detalle importa.</p>
       </div>
       <div class="proceso-item reveal d3">
         <span class="proceso-n">03</span>
-        <div class="proceso-icon-wrap"><span class="proceso-icon">🔬</span></div>
+        <div class="proceso-anim" data-anim="animaciones/paso-03.json" data-fit="slice"></div>
         <div class="proceso-h">Control de calidad</div>
         <p class="proceso-p">Revisión exhaustiva antes de salir. Si alguna pieza no cumple el estándar Artec, se rehace sin costo adicional.</p>
       </div>
       <div class="proceso-item reveal d4">
         <span class="proceso-n">04</span>
-        <div class="proceso-icon-wrap"><span class="proceso-icon">🚀</span></div>
+        <div class="proceso-anim" data-anim="animaciones/paso-04.json"></div>
         <div class="proceso-h">Entrega puntual</div>
         <p class="proceso-p">Cumplimos el tiempo acordado, siempre. Tu agenda clínica no puede depender de retrasos del laboratorio.</p>
       </div>
@@ -327,7 +327,8 @@
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="productos.js"></script>
-<script src="script.js"></script>
+<script src="productos.js?v=3"></script>
+<script src="js/lottie.min.js"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

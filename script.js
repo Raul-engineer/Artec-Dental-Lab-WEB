@@ -20,21 +20,21 @@ function renderCards(list) {
   count.textContent = list.length + ' servicio' + (list.length !== 1 ? 's' : '') + ' disponible' + (list.length !== 1 ? 's' : '');
   if (!list.length) { grid.innerHTML = '<div class="empty-state"><p>No hay servicios en esta categoría.</p></div>'; return; }
   list.forEach((p, i) => {
-    const imgSrc = `imagenes/catalogo/${p.cat}/portada.jpg`;
+    const imgSrc = `imagenes/catalogo/${p.cat}/${p.id}.jpg`;
+    const imgFb = `imagenes/catalogo/${p.cat}/portada.jpg`;
     const card = document.createElement('div');
     card.className = 'product-card';
     card.style.animationDelay = (i * 0.04) + 's';
     card.innerHTML = `
       <div class="card-img-wrap" style="background:${p.color}">
-        <img class="card-bg-img" src="${imgSrc}" alt="${p.nombre}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img class="card-bg-img" src="${imgSrc}" alt="${p.nombre}" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='${imgFb}'}else{this.style.display='none';this.nextElementSibling.style.display='flex'}"/>
         <div class="card-ph" style="display:none"><span class="card-ph-icon">${p.icon}</span></div>
         <div class="card-overlay"><button class="card-overlay-btn">Ver detalle →</button></div>
       </div>
       <div class="card-shadow-wrap" style="background:${p.color}">
-        <img class="card-shadow-img" src="${imgSrc}" alt="" onerror="this.style.display='none'"/>
+        <img class="card-shadow-img" src="${imgSrc}" alt="" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='${imgFb}'}else{this.style.display='none'}"/>
       </div>
       <div class="card-info">
-        <span class="card-cat-badge">${p.catLabel}</span>
         <div class="card-name">${p.nombre}</div>
         ${p.detalle ? `<div class="card-detalle">${p.detalle}</div>` : ''}
       </div>
@@ -113,3 +113,18 @@ document.querySelectorAll('.gal-item').forEach(item => {
     document.addEventListener('keydown', esc);
   });
 });
+
+// Animaciones Lottie de "Cómo trabajamos" (solo se reproducen cuando están en pantalla)
+(function () {
+  const els = document.querySelectorAll('.proceso-anim');
+  if (!els.length || typeof lottie === 'undefined') return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  els.forEach(el => {
+    const anim = lottie.loadAnimation({
+      container: el, renderer: 'svg', loop: true, autoplay: false, path: el.dataset.anim,
+      rendererSettings: { preserveAspectRatio: el.dataset.fit === 'slice' ? 'xMidYMid slice' : 'xMidYMid meet' }
+    });
+    if (reduce) { anim.addEventListener('DOMLoaded', () => anim.goToAndStop(30, true)); return; }
+    new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting ? anim.play() : anim.pause()), { threshold: 0.2 }).observe(el);
+  });
+})();
